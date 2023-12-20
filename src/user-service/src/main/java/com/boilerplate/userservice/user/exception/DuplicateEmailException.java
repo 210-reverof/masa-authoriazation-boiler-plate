@@ -1,11 +1,12 @@
 package com.boilerplate.userservice.user.exception;
 
-public class DuplicateEmailException extends RuntimeException {
-    public DuplicateEmailException(String message) {
-        super(message);
-    }
+import com.boilerplate.userservice.global.error.CustomException;
+import com.boilerplate.userservice.global.error.ErrorCode;
 
-    public DuplicateEmailException(String message, Throwable cause) {
-        super(message, cause);
+public class DuplicateEmailException extends CustomException {
+
+    public DuplicateEmailException(String message) {
+        super(ErrorCode.DUPLICATE_EMAIL, message);
+
     }
 }
