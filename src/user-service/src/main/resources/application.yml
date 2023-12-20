@@ -5,6 +5,11 @@ spring:
   application:
     name: user-service
 
+  data:
+    jpa:
+      repositories:
+        enabled: true
+
   datasource:
     url: jdbc:mysql://localhost:3306/won_user
     username: ${MYSQL_USERNAME}

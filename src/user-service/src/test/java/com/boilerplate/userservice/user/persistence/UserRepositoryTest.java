@@ -31,7 +31,7 @@ class UserRepositoryTest {
                 "test@test.com",
                 "hashedPassword",
                 "testnickname",
-                Gender.FEMALE,
+                Gender.female,
                 25
         );
     }
