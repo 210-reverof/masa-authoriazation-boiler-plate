@@ -1,6 +1,7 @@
 package com.boilerplate.userservice.user.application;
 
 import com.boilerplate.userservice.user.dto.request.UserJoinRequest;
+import com.boilerplate.userservice.user.exception.DuplicateEmailException;
 import com.boilerplate.userservice.user.persistence.UserRepository;
 import com.boilerplate.userservice.user.persistence.domain.Gender;
 import com.boilerplate.userservice.user.persistence.domain.User;
@@ -17,7 +18,10 @@ public class UserService {
     public void join(UserJoinRequest userJoinRequest) {
         User user = convertToUser(userJoinRequest);
 
-        // TODO: 이메일 중복 예외처리
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new DuplicateEmailException("이메일 중복");
+        }
+
         userRepository.save(user);
     }
 
