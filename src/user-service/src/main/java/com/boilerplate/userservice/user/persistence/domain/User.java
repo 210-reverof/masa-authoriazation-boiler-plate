@@ -1,4 +1,4 @@
-package com.boilerplate.userservice.user.presentation.domain;
+package com.boilerplate.userservice.user.persistence.domain;
 
 import com.boilerplate.userservice.global.BaseEntity;
 import jakarta.persistence.*;

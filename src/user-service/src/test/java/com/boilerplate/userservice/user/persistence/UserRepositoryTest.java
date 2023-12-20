@@ -1,7 +1,8 @@
-package com.boilerplate.userservice.user.presentation;
+package com.boilerplate.userservice.user.persistence;
 
-import com.boilerplate.userservice.user.presentation.domain.Gender;
-import com.boilerplate.userservice.user.presentation.domain.User;
+import com.boilerplate.userservice.user.persistence.UserRepository;
+import com.boilerplate.userservice.user.persistence.domain.Gender;
+import com.boilerplate.userservice.user.persistence.domain.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.boilerplate.userservice.user.presentation.domain;
+package com.boilerplate.userservice.user.persistence.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

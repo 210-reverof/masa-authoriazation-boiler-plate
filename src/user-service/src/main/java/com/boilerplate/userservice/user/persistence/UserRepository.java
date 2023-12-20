@@ -1,6 +1,6 @@
-package com.boilerplate.userservice.user.presentation;
+package com.boilerplate.userservice.user.persistence;
 
-import com.boilerplate.userservice.user.presentation.domain.User;
+import com.boilerplate.userservice.user.persistence.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
