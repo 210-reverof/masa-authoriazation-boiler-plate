@@ -1,15 +1,23 @@
 <template>
   <div class="home">
-    <p>hello</p>
+    <button @click="goToMemberInfo">회원정보 페이지</button>
+    <button @click="goToMemberList">회원관리 페이지</button>
   </div>
 </template>
-  
-  <script>
-  export default {
-    name: "HomeView",
-    created() {
-      console.log("HomeView component is created!");
+
+<script>
+export default {
+  name: "HomeView",
+  methods: {
+    goToMemberInfo() {
+      this.$router.push("/info");
     },
-  };
-  </script>
-  
+    goToMemberList() {
+      this.$router.push("/list");
+    },
+  },
+  created() {
+    console.log("HomeView component is created!");
+  },
+};
+</script>
