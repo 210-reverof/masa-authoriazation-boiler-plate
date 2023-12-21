@@ -4,12 +4,13 @@
             <div class="form-group">
                 <label for="email">이메일:</label>
                 <input type="email" id="email" v-model="email" required>
-                <button type="button" @click="sendVerificationEmail">인증</button>
+                <button type="button" @click="sendVerificationEmail">인증번호 발송</button>
             </div>
 
             <div class="form-group">
                 <label for="emailVerification">이메일 인증:</label>
                 <input type="text" id="emailVerification" v-model="emailVerification" required>
+                <button type="button" @click="sendVerificationEmail">인증</button>
             </div>
 
             <div class="form-group">
