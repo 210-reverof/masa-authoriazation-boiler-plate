@@ -13,6 +13,21 @@ const routes = [
     path: '/join',
     name: 'join',
     component: () => import('@/views/JoinView.vue'),
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/LoginView.vue'),
+  },
+  {
+    path: '/info',
+    name: 'info',
+    component: () => import('@/views/InfoView.vue'),
+  },
+  {
+    path: '/list',
+    name: 'list',
+    component: () => import('@/views/ListView.vue'),
   }
 ];
 
