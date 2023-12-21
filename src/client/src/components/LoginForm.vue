@@ -12,6 +12,7 @@
             </div>
 
             <button type="submit">로그인</button>
+            <button type="button" @click="moveJoin">회원가입</button>
         </form>
     </div>
 </template>
@@ -28,6 +29,9 @@ export default {
     methods: {
         submitForm() {
             console.log("로그인 정보", this.$data);
+        },
+        moveJoin() {
+            console.log("회원가입");
         }
     },
 };
