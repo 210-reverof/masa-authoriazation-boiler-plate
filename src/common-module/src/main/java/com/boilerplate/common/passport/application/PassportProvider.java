@@ -1,9 +1,9 @@
 package com.boilerplate.common.passport.application;
 
-import com.boilerplate.common.passport.dto.AuthUser;
+import com.boilerplate.common.passport.dto.UserInfo;
 
 public interface PassportProvider {
-    String generatePassport(AuthUser memberInfo);
-    AuthUser getMemberInfo(String message);
+    String generatePassport(UserInfo memberInfo);
+    UserInfo getMemberInfo(String message);
     boolean validatePassport(String message);
 }

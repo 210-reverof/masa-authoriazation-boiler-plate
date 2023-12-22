@@ -1,6 +1,6 @@
 package com.boilerplate.common.passport.dto;
 
-public record AuthUser(
+public record UserInfo(
     Long id,
     String email,
     String name,
