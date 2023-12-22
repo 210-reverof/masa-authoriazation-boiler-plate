@@ -29,12 +29,6 @@ public class UserService {
         userRepository.save(user);
     }
 
-    private User convertToUser(UserJoinRequest request) {
-        String encodedPassword = passwordEncoder.encode(request.getPassword());
-        Gender gender = Gender.valueOf(request.getGender());
-        return new User(request.getEmail(), encodedPassword, request.getNickname(), gender, request.getAge());
-    }
-
     public UserInfoResponse getInfoById(Long userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundUserException("없는 회원 id" + userId));
         return new UserInfoResponse(user);
@@ -43,5 +37,11 @@ public class UserService {
     public UserInfoResponse getInfoByEmail(UserEmailRequest userEmailRequest) {
         User user = userRepository.findByEmail(userEmailRequest.email()).orElseThrow(() -> new NotFoundUserException("없는 회원 email" + userEmailRequest.email()));
         return new UserInfoResponse(user);
+    }
+
+    private User convertToUser(UserJoinRequest request) {
+        String encodedPassword = passwordEncoder.encode(request.getPassword());
+        Gender gender = Gender.valueOf(request.getGender());
+        return new User(request.getEmail(), encodedPassword, request.getNickname(), gender, request.getAge());
     }
 }
