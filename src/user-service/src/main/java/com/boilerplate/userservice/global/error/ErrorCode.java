@@ -7,7 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ErrorCode {
     INTERNAL_SERVER_ERROR(500, "U-0000" ),
-    DUPLICATE_EMAIL(400, "U-0001");
+    DUPLICATE_EMAIL(400, "U-0001"),
+    NOT_FOUND_USER(400, "U-0002");
 
     private final int status;
     private final String code;
