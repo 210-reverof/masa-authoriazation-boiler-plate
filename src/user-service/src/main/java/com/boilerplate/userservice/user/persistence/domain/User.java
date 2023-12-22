@@ -1,6 +1,6 @@
 package com.boilerplate.userservice.user.persistence.domain;
 
-import com.boilerplate.userservice.global.BaseEntity;
+import com.boilerplate.userservice.global.persistence.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
