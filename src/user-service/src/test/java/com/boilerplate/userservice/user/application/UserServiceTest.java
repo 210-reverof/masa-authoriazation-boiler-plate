@@ -31,7 +31,7 @@ class UserServiceTest {
     void 회원을_추가한다() {
         // given
         UserJoinRequest userJoinRequest = new UserJoinRequest(
-                "test@example.com", "password123", "testuser", "male", 25
+                "test@example.com", "password123", "testuser", "MALE", 25
         );
         when(passwordEncoder.encode("password123")).thenReturn("hashedPassword123");
 
@@ -47,7 +47,7 @@ class UserServiceTest {
     void 중복된_이메일은_예외를_발생한다() {
         // given
         UserJoinRequest userJoinRequest = new UserJoinRequest(
-                "test@example.com", "password123", "testuser", "male", 25
+                "test@example.com", "password123", "testuser", "MALE", 25
         );
         when(userRepository.existsByEmail("test@example.com")).thenReturn(true);
 

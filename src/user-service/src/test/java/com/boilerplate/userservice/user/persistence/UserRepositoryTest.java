@@ -2,6 +2,7 @@ package com.boilerplate.userservice.user.persistence;
 
 import com.boilerplate.userservice.user.persistence.UserRepository;
 import com.boilerplate.userservice.user.persistence.domain.Gender;
+import com.boilerplate.userservice.user.persistence.domain.Role;
 import com.boilerplate.userservice.user.persistence.domain.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -24,6 +25,7 @@ class UserRepositoryTest {
     private UserRepository userRepository;
 
     private User user;
+    private User admin;
 
     @BeforeEach
     public void setUp() {
@@ -31,8 +33,17 @@ class UserRepositoryTest {
                 "test@test.com",
                 "hashedPassword",
                 "testnickname",
-                Gender.female,
+                Gender.FEMALE,
                 25
+        );
+
+        admin = new User(
+                "testadmin@test.com",
+                "hashedPassword",
+                "admin",
+                Gender.FEMALE,
+                25,
+                Role.ADMIN
         );
     }
 
@@ -53,6 +64,26 @@ class UserRepositoryTest {
         assertThat(savedUser.getNickname()).isEqualTo(user.getNickname());
         assertThat(savedUser.getGender()).isEqualTo(user.getGender());
         assertThat(savedUser.getAge()).isEqualTo(user.getAge());
+    }
+
+    @Test
+    @DisplayName("관리자를 추가한다.")
+    public void 관리자를_추가한다() {
+        // given
+
+        // when
+        userRepository.save(admin);
+
+        // then
+        User savedAdmin = userRepository.findByEmail("testadmin@test.com").orElse(null);
+
+        assertThat(savedAdmin).isNotNull();
+        assertThat(savedAdmin.getEmail()).isEqualTo(admin.getEmail());
+        assertThat(savedAdmin.getPassword()).isEqualTo(admin.getPassword());
+        assertThat(savedAdmin.getNickname()).isEqualTo(admin.getNickname());
+        assertThat(savedAdmin.getGender()).isEqualTo(admin.getGender());
+        assertThat(savedAdmin.getAge()).isEqualTo(admin.getAge());
+        assertThat(savedAdmin.getRole()).isEqualTo(admin.getRole());
     }
 
 
