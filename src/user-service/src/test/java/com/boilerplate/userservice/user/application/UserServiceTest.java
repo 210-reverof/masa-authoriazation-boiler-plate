@@ -74,7 +74,7 @@ class UserServiceTest {
         // when
         // then
         assertThrows(NotFoundUserException.class, () -> {
-            userService.findById(userId);
+            userService.getInfoById(userId);
         });
     }
 
@@ -88,7 +88,7 @@ class UserServiceTest {
         // when
         // then
         assertThrows(NotFoundUserException.class, () -> {
-            userService.findById(id);
+            userService.getInfoById(id);
         }, "없는 회원 id");
     }
 
