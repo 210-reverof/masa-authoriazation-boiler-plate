@@ -18,6 +18,7 @@ import javax.swing.text.html.Option;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -58,9 +59,23 @@ class UserServiceTest {
 
         // when
         // then
-        Assertions.assertThrows(DuplicateEmailException.class, () -> {
+        assertThrows(DuplicateEmailException.class, () -> {
             userService.join(userJoinRequest);
         }, "중복된 이메일이 예외를 발생");
+    }
+
+    @Test
+    @DisplayName("회원id로 조회한다.")
+    void 회원id로_조회한다() {
+        // given
+        Long userId = 1L;
+        when(userRepository.findById(any(Long.class))).thenReturn(Optional.empty());
+
+        // when
+        // then
+        assertThrows(NotFoundUserException.class, () -> {
+            userService.findById(userId);
+        });
     }
 
     @Test
@@ -72,7 +87,7 @@ class UserServiceTest {
 
         // when
         // then
-        Assertions.assertThrows(NotFoundUserException.class, () -> {
+        assertThrows(NotFoundUserException.class, () -> {
             userService.findById(id);
         }, "없는 회원 id");
     }
