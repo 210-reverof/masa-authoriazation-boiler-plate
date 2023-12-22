@@ -108,19 +108,4 @@ class UserRepositoryTest {
         assertThat(currUser.getAge()).isEqualTo(user.getAge());
         assertThat(currUser.getRole()).isEqualTo(user.getRole());
     }
-
-    @Test
-    @DisplayName("없는 id면 예외가 발생한다.")
-    public void 없는_id면_예외가_발생한다() {
-        // given
-        Long id = 0L;
-
-        // when
-
-        // then
-        assertThatThrownBy(() -> userRepository.existsById(id))
-                .isInstanceOf(NotFoundUserException.class);
-    }
-
-
 }

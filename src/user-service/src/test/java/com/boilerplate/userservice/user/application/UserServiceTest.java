@@ -2,6 +2,7 @@ package com.boilerplate.userservice.user.application;
 
 import com.boilerplate.userservice.user.dto.request.UserJoinRequest;
 import com.boilerplate.userservice.user.exception.DuplicateEmailException;
+import com.boilerplate.userservice.user.exception.NotFoundUserException;
 import com.boilerplate.userservice.user.persistence.UserRepository;
 import com.boilerplate.userservice.user.persistence.domain.Gender;
 import com.boilerplate.userservice.user.persistence.domain.User;
@@ -57,4 +58,20 @@ class UserServiceTest {
             userService.join(userJoinRequest);
         }, "중복된 이메일이 예외를 발생");
     }
+
+    @Test
+    @DisplayName("없는 회원id 조회에는 예외가 발생한다.")
+    void 없는_회원id_조회에는_예외가_발생한다() {
+        // given
+        Long id = 0L;
+        when(userRepository.existsById(id)).thenReturn(false);
+
+        // when
+        // then
+        Assertions.assertThrows(NotFoundUserException.class, () -> {
+            userService.findById(id);
+        }, "없는 회원 id");
+    }
+
+
 }
