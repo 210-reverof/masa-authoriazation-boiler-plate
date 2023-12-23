@@ -12,7 +12,6 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
-@Component
 public class HMacPassportProvider implements PassportProvider {
     private final String HMacAlgo;
     private final String secretKey;
@@ -49,7 +48,7 @@ public class HMacPassportProvider implements PassportProvider {
         UserInfo memberInfo;
         try {
             String passportStr = new String(Base64.getDecoder().decode(message));
-            String infoStr = objectMapper.readTree(passportStr).get("userInfo").toString();
+            String infoStr = objectMapper.readTree(passportStr).get("memberInfo").toString();
             memberInfo = objectMapper.readValue(infoStr, UserInfo.class);
 
         } catch (JsonProcessingException e) {
