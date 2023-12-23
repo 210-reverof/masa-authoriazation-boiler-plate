@@ -29,3 +29,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
+
+jwt:
+  key: ${SECRETE_KEY}

@@ -32,6 +32,11 @@ public class UserController {
         return ResponseEntity.ok(userService.getInfoById(userId));
     }
 
+    @GetMapping("/admin")
+    public ResponseEntity<String> test() {
+        return ResponseEntity.ok("adddddmin");
+    }
+
     @PostMapping("/login")
     ResponseEntity<Long> checkLogin(@RequestBody LoginRequest loginRequest){
         return ResponseEntity.ok(userService.checkLogin(loginRequest));
