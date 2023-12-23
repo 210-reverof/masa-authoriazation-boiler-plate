@@ -1,5 +1,6 @@
 package com.boilerplate.userservice.user.presentation;
 
+import com.boilerplate.common.passport.application.PassportProvider;
 import com.boilerplate.common.passport.dto.UserInfo;
 import com.boilerplate.common.passport.presentation.AuthUser;
 import com.boilerplate.userservice.user.application.UserService;
@@ -7,6 +8,7 @@ import com.boilerplate.userservice.user.dto.request.LoginRequest;
 import com.boilerplate.userservice.user.dto.request.UserJoinRequest;
 import com.boilerplate.userservice.user.dto.response.UserInfoResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+    private final PassportProvider passportProvider;
 
     @PostMapping("/join")
     public ResponseEntity<Void> join(@RequestBody UserJoinRequest userJoinRequest) {

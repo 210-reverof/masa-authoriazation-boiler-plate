@@ -19,3 +19,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+passport:
+  key: ${SECRETE_KEY}
+  algorithm: HmacSHA256

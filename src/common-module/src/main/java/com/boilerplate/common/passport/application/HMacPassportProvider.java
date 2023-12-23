@@ -12,7 +12,6 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
-@Component
 public class HMacPassportProvider implements PassportProvider {
     private final String HMacAlgo;
     private final String secretKey;
@@ -27,13 +26,13 @@ public class HMacPassportProvider implements PassportProvider {
     }
 
     @Override
-    public String generatePassport(UserInfo memberInfo) {
+    public String generatePassport(UserInfo userInfo) {
         String message;
         try {
-            String memberInfoStr = objectMapper.writeValueAsString(memberInfo);
-            String hashStr = createHMAC(memberInfoStr);
+            String userInfoStr = objectMapper.writeValueAsString(userInfo);
+            String hashStr = createHMAC(userInfoStr);
 
-            Passport passport = new Passport(memberInfo, hashStr);
+            Passport passport = new Passport(userInfo, hashStr);
             String passportStr = objectMapper.writeValueAsString(passport);
             message = Base64.getEncoder().encodeToString(passportStr.getBytes());
 
@@ -65,9 +64,9 @@ public class HMacPassportProvider implements PassportProvider {
         String hashStr;
         try {
             String passportStr = new String(Base64.getDecoder().decode(message));
-            String infoStr = objectMapper.readTree(passportStr).get("memberInfo").toString();
+            String infoStr = objectMapper.readTree(passportStr).get("userInfo").toString();
             infoEncodeStr = createHMAC(infoStr);
-            hashStr = objectMapper.readTree(passportStr).get("memberInfoIntegrity").asText();
+            hashStr = objectMapper.readTree(passportStr).get("userInfoIntegrity").asText();
 
             if (!hashStr.equals(infoEncodeStr)) throw new InvalidPassportException("잘못된 패스포트");
 
