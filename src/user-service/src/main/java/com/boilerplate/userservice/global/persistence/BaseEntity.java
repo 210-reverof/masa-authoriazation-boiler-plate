@@ -1,4 +1,4 @@
-package com.boilerplate.userservice.global;
+package com.boilerplate.userservice.global.persistence;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

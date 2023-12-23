@@ -1,6 +1,6 @@
 package com.boilerplate.userservice.user.persistence.domain;
 
-import com.boilerplate.userservice.global.BaseEntity;
+import com.boilerplate.userservice.global.persistence.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,11 +30,23 @@ public class User extends BaseEntity {
 
     private Integer age;
 
+    private Role role;
+
     public User(String email, String password, String nickname, Gender gender, Integer age) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
         this.gender = gender;
         this.age = age;
+        this.role = Role.MEMBER;
+    }
+
+    public User(String email, String password, String nickname, Gender gender, Integer age, Role role) {
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+        this.gender = gender;
+        this.age = age;
+        this.role = role;
     }
 }
