@@ -19,7 +19,7 @@ public class AppConfig {
     String secretKey;
 
     @Bean
-    public PassportProvider tokenProvider() {
+    public PassportProvider passportProvider() {
         return new HMacPassportProvider(HMacAlgo, secretKey, new ObjectMapper());
     }
 
