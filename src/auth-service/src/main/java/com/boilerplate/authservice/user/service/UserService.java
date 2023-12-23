@@ -1,5 +1,6 @@
 package com.boilerplate.authservice.user.service;
 
+import com.boilerplate.authservice.auth.dto.request.LoginRequest;
 import com.boilerplate.authservice.global.infra.feign.UserServiceClient;
 import com.boilerplate.authservice.user.dto.UserInfoResponse;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +17,12 @@ public class UserService {
         return requestUserInfo(id);
     }
 
+    public Long checkLogin(LoginRequest loginRequest) {
+        // TODO: feign 예외처리
+        return userServiceClient.checkLogin(loginRequest);
+    }
+
     private UserInfoResponse requestUserInfo(Long id) {
         return userServiceClient.getUserInfo(id);
     }
-
 }

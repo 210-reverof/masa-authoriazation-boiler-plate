@@ -1,10 +1,12 @@
 package com.boilerplate.userservice.user.application;
 
 import com.boilerplate.userservice.global.error.ErrorCode;
+import com.boilerplate.userservice.user.dto.request.LoginRequest;
 import com.boilerplate.userservice.user.dto.request.UserEmailRequest;
 import com.boilerplate.userservice.user.dto.request.UserJoinRequest;
 import com.boilerplate.userservice.user.dto.response.UserInfoResponse;
 import com.boilerplate.userservice.user.exception.DuplicateEmailException;
+import com.boilerplate.userservice.user.exception.InvalidLoginException;
 import com.boilerplate.userservice.user.exception.NotFoundUserException;
 import com.boilerplate.userservice.user.persistence.UserRepository;
 import com.boilerplate.userservice.user.persistence.domain.Gender;
@@ -43,5 +45,15 @@ public class UserService {
         String encodedPassword = passwordEncoder.encode(request.getPassword());
         Gender gender = Gender.valueOf(request.getGender());
         return new User(request.getEmail(), encodedPassword, request.getNickname(), gender, request.getAge());
+    }
+
+    public Long checkLogin(LoginRequest loginRequest) {
+        User user = userRepository.findByEmail(loginRequest.getEmail()).orElseThrow(() -> new NotFoundUserException("없는 회원 email" + loginRequest.getEmail()));
+
+        if (!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
+            throw new InvalidLoginException("잘못된 로그인 정보");
+        }
+
+        return user.getId();
     }
 }
