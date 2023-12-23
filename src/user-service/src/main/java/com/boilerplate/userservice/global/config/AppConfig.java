@@ -8,6 +8,5 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @Configuration
 @EnableDiscoveryClient
 @EnableJpaAuditing
-@EnableFeignClients
 public class AppConfig {
 }

@@ -6,6 +6,5 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableDiscoveryClient
-@EnableFeignClients
 public class AppConfig {
 }
