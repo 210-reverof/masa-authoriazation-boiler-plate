@@ -17,9 +17,13 @@ repositories {
 
 ext {
 	set('springCloudVersion', "2022.0.4")
+	set('springBootGrpcVersion', "2.15.0.RELEASE")
 }
 
 dependencies {
+	implementation "net.devh:grpc-spring-boot-starter:${springBootGrpcVersion}"
+	implementation project(path: ':grpc-interface')
+
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
 	implementation project(path: ':common-module')
