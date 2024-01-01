@@ -21,8 +21,18 @@ passport:
 
 grpc:
   client:
-    local-grpc-server:
-      address: 'static://localhost:9803'
+    cloud-grpc-server:
+      address: 'discovery:///USER-SERVICE'
+#      address: 'static://localhost:9803'
       enableKeepAlive: true
       keepAliveWithoutCalls: true
       negotiationType: plaintext
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
