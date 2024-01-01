@@ -17,9 +17,13 @@ repositories {
 
 ext {
 	set('springCloudVersion', "2022.0.4")
+	set('springBootGrpcVersion', "2.15.0.RELEASE")
 }
 
 dependencies {
+	implementation "net.devh:grpc-spring-boot-starter:${springBootGrpcVersion}"
+	implementation project(path: ':grpc-interface')
+
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'

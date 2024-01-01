@@ -5,8 +5,7 @@ option java_package = "com.boilerplate.grpc.lib";
 option java_outer_classname = "HelloWorldProto";
 
 service HelloService {
-  rpc SayHello (HelloRequest) returns (HelloReply) {
-  }
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
 }
 
 message HelloRequest {

@@ -18,3 +18,11 @@ jwt:
 passport:
   key: ${SECRETE_KEY}
   algorithm: HmacSHA256
+
+grpc:
+  client:
+    local-grpc-server:
+      address: 'static://localhost:9803'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
