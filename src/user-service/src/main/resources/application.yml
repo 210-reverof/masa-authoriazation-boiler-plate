@@ -23,3 +23,7 @@ spring:
 passport:
   key: ${SECRETE_KEY}
   algorithm: HmacSHA256
+
+grpc:
+  server:
+    port: 9803
