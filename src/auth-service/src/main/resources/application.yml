@@ -1,0 +1,38 @@
+server:
+  port: 9004
+
+spring:
+  application:
+    name: auth-service
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+jwt:
+  expiration:
+    access: 86400000
+    refresh: 604800000
+  key: ${SECRETE_KEY}
+
+passport:
+  key: ${SECRETE_KEY}
+  algorithm: HmacSHA256
+
+grpc:
+  client:
+    cloud-grpc-server:
+      address: 'discovery:///USER-SERVICE'
+#      address: 'static://localhost:9803'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

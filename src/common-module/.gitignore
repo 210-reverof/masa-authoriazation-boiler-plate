@@ -1,0 +1,34 @@
+# IDE specific
+.idea/
+*.iml
+
+# Gradle specific
+.gradle/
+build/
+
+# Compiled class file
+build/classes/
+
+# Log files
+*.log
+
+# IntelliJ
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+
+# Mac
+.DS_Store
+
+# IntelliJ IDEA
+.idea/
+
+# Eclipse
+.eclipse/
+
+# VS Code
+.vscode/
