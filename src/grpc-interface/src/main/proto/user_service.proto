@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.boilerplate.grpc.lib";
+option java_outer_classname = "UserServiceProto";
+
+service UserService {
+  rpc GetUserInfo (UserInfoRequest) returns (UserInfoResponse);
+}
+
+message UserInfoRequest {
+  int64 userId = 1;
+}
+
+message UserInfoResponse {
+  int64 id = 1;
+  string email = 2;
+  string nickname = 3;
+  Gender gender = 4;
+  int32 age = 5;
+  Role role = 6;
+}
+
+enum Gender {
+  MALE = 0;
+  FEMALE = 1;
+}
+
+enum Role {
+  ADMIN = 0;
+  USER = 1;
+}
